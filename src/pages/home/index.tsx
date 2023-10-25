@@ -9,41 +9,19 @@ import { fetchOrganizationData } from '../../queries/fetchOrganizationData';
 import { organizationSchema } from '../../queries/fetchOrganizationData/yupSchema';
 import { validateAndSendErrors } from '../../queries/utils';
 import ErrorDialog from './component/errorModal';
+import HomeSkeleton from './component/skeleton';
+import SmartContent from './component/smartContent';
 
 const Home: React.FC = () => {
   const { theme, toggleTheme } = useHTheme();
-  const [validatedData, setValidatedData] = useState<IOrganizationStructure>();
-  const [isShowErrorModal, setIsShowErrorModal] = useState<boolean>(false);
-  const { data, isLoading, isError } = useQuery<IOrganizationStructure>(
-    QueryKeys.ORGANIZATION_DATA,
-    fetchOrganizationData
-  );
-  useEffect(() => {
-    if (data) {
-      //validate data structure
-      validateAndSendErrors(data, organizationSchema)
-        .then(() => setValidatedData(data))
-        .catch(() => setIsShowErrorModal(true));
-    }
-  }, [data]);
 
+  ///loading
   return (
     <div>
       <NavigationMenu />
       {/* <Hero /> */}
 
-      <div
-        style={{
-          backgroundColor: theme.palette.background.default,
-          color: theme.palette.text.primary,
-        }}
-      >
-        {isShowErrorModal ? (
-          <ErrorDialog isOpen={true} setIsOpen={setIsShowErrorModal} />
-        ) : (
-          'dataContent using the current theme.'
-        )}
-      </div>
+      <SmartContent />
     </div>
   );
 };

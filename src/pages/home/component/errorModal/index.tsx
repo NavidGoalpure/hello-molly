@@ -17,10 +17,6 @@ export default function ErrorDialog({ isOpen, setIsOpen }: Props) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-  const handleClickOpen = () => {
-    setIsOpen(true);
-  };
-
   const handleClose = () => {
     setIsOpen(false);
   };

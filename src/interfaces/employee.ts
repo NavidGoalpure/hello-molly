@@ -9,8 +9,9 @@ export type IEmployee = {
   name: string;
   role: string;
   department: IDepartment;
+  avatar: string;
 };
-type ICeo = Omit<IEmployee, 'department'>;
+export type ICeo = Omit<IEmployee, 'department'>;
 export type IOrganizationStructure = {
   ceo: ICeo;
   midLevels: IEmployee[];

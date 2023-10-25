@@ -1,9 +1,12 @@
+import { IEmployee, IOrganizationStructure } from '../../interfaces/employee';
+
 const mockData = {
   ceo: {
     id: '1',
     parentId: null,
     name: 'John Smith',
     role: 'CEO',
+    avatar: 'https://mui.com/static/images/avatar/1.jpg',
   },
   midLevels: [
     {
@@ -12,6 +15,7 @@ const mockData = {
       name: 'Alice Johnson',
       role: 'Manager',
       department: 'DEVELOPMENT',
+      avatar: 'https://mui.com/static/images/avatar/2.jpg',
     },
     {
       id: '3',
@@ -19,6 +23,7 @@ const mockData = {
       name: 'Bob Anderson',
       role: 'Manager',
       department: 'RESEARCH',
+      avatar: 'https://mui.com/static/images/avatar/3.jpg',
     },
     {
       id: '4',
@@ -26,6 +31,7 @@ const mockData = {
       name: 'Eve Williams',
       role: 'Manager',
       department: 'MARKETING',
+      avatar: 'https://mui.com/static/images/avatar/4.jpg',
     },
   ],
   lowLevel: [
@@ -35,6 +41,7 @@ const mockData = {
       name: 'Charlie Brown',
       role: 'Employee',
       department: 'DEVELOPMENT',
+      avatar: 'https://mui.com/static/images/avatar/5.jpg',
     },
     {
       id: '6',
@@ -42,6 +49,7 @@ const mockData = {
       name: 'David Davis',
       role: 'Employee',
       department: 'DEVELOPMENT',
+      avatar: 'https://mui.com/static/images/avatar/6.jpg',
     },
     {
       id: '7',
@@ -49,6 +57,7 @@ const mockData = {
       name: 'Frank White',
       role: 'Employee',
       department: 'RESEARCH',
+      avatar: 'https://mui.com/static/images/avatar/7.jpg',
     },
     {
       id: '8',
@@ -56,6 +65,7 @@ const mockData = {
       name: 'Grace Smith',
       role: 'Employee',
       department: 'RESEARCH',
+      avatar: 'https://mui.com/static/images/avatar/2.jpg',
     },
     {
       id: '9',
@@ -63,8 +73,9 @@ const mockData = {
       name: 'Hank Robinson',
       role: 'Employee',
       department: 'MARKETING',
+      avatar: 'https://mui.com/static/images/avatar/3.jpg',
     },
   ],
-};
+} as IOrganizationStructure;
 
 export default mockData;
