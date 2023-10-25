@@ -5,8 +5,8 @@ import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import heroImage from './hero.jpg';
-import { useHTheme } from '../../../contexts/themeContext';
-import HInput from '../../../elements/hInput';
+import { useHTheme } from '../../../../contexts/themeContext';
+import HInput from '../../../../elements/hInput';
 
 const Hero = () => {
   const { theme } = useHTheme();

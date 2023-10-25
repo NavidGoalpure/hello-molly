@@ -4,7 +4,6 @@ import { useHTheme } from '../contexts/themeContext';
 
 export default function HInput({ children, ...rest }: TextFieldProps) {
   const { theme } = useHTheme();
-
   return (
     <StyledInput {...rest} theme={theme}>
       {children}
