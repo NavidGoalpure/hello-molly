@@ -9,9 +9,12 @@ import { QueryKeys } from '../../../interfaces/query';
 import { fetchOrganizationData } from '../../../queries/fetchOrganizationData';
 import { organizationSchema } from '../../../queries/fetchOrganizationData/yupSchema';
 import { validateAndSendErrors } from '../../../queries/utils';
-import EmployeeCard from './EmployeeCard';
+import EmployeeCard from './employeeCard';
 import { Container, Grid, styled } from '@mui/material';
 import { useHTheme } from '../../../contexts/themeContext';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import EmployeeSlider from './employeeSlider';
 
 export default function SmartContent() {
   const { theme } = useHTheme();
@@ -40,11 +43,9 @@ export default function SmartContent() {
       <CeoContainer>
         {validatedData?.ceo && <EmployeeCard employee={validatedData.ceo} />}
       </CeoContainer>
-      {validatedData?.midLevels
-        ? validatedData?.midLevels?.map((employee) => (
-            <EmployeeCard employee={employee} key={employee.id} />
-          ))
-        : null}
+      {validatedData?.midLevels && (
+        <EmployeeSlider employees={validatedData.midLevels} />
+      )}
     </Wrapper>
   );
 }

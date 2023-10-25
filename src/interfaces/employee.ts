@@ -8,12 +8,11 @@ export type IEmployee = {
   parentId: string | null;
   name: string;
   role: string;
-  department: IDepartment;
+  department?: IDepartment;
   avatar: string;
 };
-export type ICeo = Omit<IEmployee, 'department'>;
 export type IOrganizationStructure = {
-  ceo: ICeo;
+  ceo: IEmployee;
   midLevels: IEmployee[];
   lowLevel: IEmployee[];
 };

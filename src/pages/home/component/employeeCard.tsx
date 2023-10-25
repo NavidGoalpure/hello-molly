@@ -2,8 +2,7 @@ import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import CardMedia from '@mui/material/CardMedia';
-import { ICeo, IEmployee } from '../../../interfaces/employee';
+import { IEmployee } from '../../../interfaces/employee';
 import {
   Box,
   Button,
@@ -14,7 +13,7 @@ import {
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 interface CardComponentProps {
-  employee: IEmployee | ICeo;
+  employee: IEmployee;
 }
 
 const EmployeeCard: React.FC<CardComponentProps> = ({ employee }) => {
