@@ -1,8 +1,7 @@
 import React from 'react';
-import Button from '@mui/material/Button';
-import { useHTheme } from '../contexts/themeContext';
-import NavigationMenu from '../elements/navigationMenu';
-import Hero from '../component';
+import { useHTheme } from '../../contexts/themeContext';
+import Hero from './component';
+import NavigationMenu from '../../components/navigationMenu';
 
 const Home: React.FC = () => {
   const { theme, toggleTheme } = useHTheme();
@@ -10,10 +9,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <NavigationMenu />
-      <Hero />
-      <Button variant='contained' onClick={toggleTheme}>
-        Toggle Theme
-      </Button>
+      {/* <Hero /> */}
       <div
         style={{
           backgroundColor: theme.palette.background.default,
