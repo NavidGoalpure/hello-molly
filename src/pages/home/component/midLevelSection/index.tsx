@@ -70,12 +70,11 @@ export default function MidLevelSection({ employees }: Props) {
             };
 
             return (
-              <SwiperSlide>
+              <SwiperSlide key={employee.id}>
                 <EmployeeCard
                   isSelected={isSelected}
                   selectHandler={toggleSelectedNode}
                   employee={employee}
-                  key={employee.id}
                   expandButton={{
                     expandLessHandler: () => {
                       removeChildrenFromShowableList({
