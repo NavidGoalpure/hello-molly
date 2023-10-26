@@ -49,4 +49,5 @@ const Wrapper = styled(Grid)`
   background-color: ${({ theme }) => theme.palette.background.default};
   color: ${({ theme }) => theme.palette.text.primary};
   padding-top: 3rem;
+  padding-bottom: 3rem;
 `;

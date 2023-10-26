@@ -1,16 +1,14 @@
 import React from 'react';
 import Hero from './component/hero';
-import NavigationMenu from '../../components/navigationMenu';
 import SmartContent from './component/smartContent';
+import Layout from '../../components/layout';
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <NavigationMenu />
-      {/* <Hero /> */}
-
+    <Layout>
+      <Hero />
       <SmartContent />
-    </div>
+    </Layout>
   );
 };
 
