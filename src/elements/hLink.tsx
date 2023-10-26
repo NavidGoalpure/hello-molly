@@ -10,7 +10,7 @@ export default function HLink({ children, href = '#', ...rest }: LinkProps) {
 }
 
 const StyledLink = styled(Link)`
-  // color: ${({ theme }) => theme.palette.text.primary};
-  color: white;
+  color: ${({ theme }) => theme.palette.text.primary};
   margin-left: 1rem;
+  text-decoration: unset;
 `;
