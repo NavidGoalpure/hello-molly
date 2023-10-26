@@ -13,7 +13,7 @@ const mockData = {
       id: '2',
       parentId: '1', // Alice is the child of John
       name: 'Alice Johnson',
-      role: 'Manager',
+      role: 'Director',
       department: 'DEVELOPMENT',
       avatar: 'https://mui.com/static/images/avatar/3.jpg',
     },
@@ -21,7 +21,7 @@ const mockData = {
       id: '3',
       parentId: '1', // Bob is the child of John
       name: 'Bob Anderson',
-      role: 'Manager',
+      role: 'Director',
       department: 'RESEARCH',
       avatar: 'https://mui.com/static/images/avatar/2.jpg',
     },
@@ -29,7 +29,7 @@ const mockData = {
       id: '4',
       parentId: '1', // Eve is the child of John
       name: 'Eve Williams',
-      role: 'Manager',
+      role: 'Director',
       department: 'MARKETING',
       avatar: 'https://mui.com/static/images/avatar/4.jpg',
     },

@@ -1,5 +1,4 @@
 import { Devices } from '../../../../interfaces';
-import { IEmployee } from '../../../../interfaces/employee';
 import { ISelectedNode } from '../../interfaces';
 
 export function getSlidesNumber(device: Devices): number {

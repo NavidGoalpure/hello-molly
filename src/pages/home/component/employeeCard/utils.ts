@@ -1,5 +1,4 @@
 import { IDepartment } from '../../../../interfaces/employee';
-import { ISelectedNode } from '../../interfaces';
 
 export function getColorBaseOnDepartment(
   department: IDepartment | undefined
