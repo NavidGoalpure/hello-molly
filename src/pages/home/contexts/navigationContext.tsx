@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { ISelectedNode } from '../interfaces';
 
 type Context = {
-  selectedEmployee: string;
-  setSelectedEmployee: React.Dispatch<React.SetStateAction<string>>;
+  selectedNode: ISelectedNode | null;
+  setSelectedNode: React.Dispatch<React.SetStateAction<ISelectedNode | null>>;
 };
 type Props = {
   children: React.ReactNode;
@@ -10,13 +11,13 @@ type Props = {
 
 const NavigationContext = React.createContext({} as Context);
 function NavigationContextProvider({ children }: Props) {
-  const [selectedEmployee, setSelectedEmployee] = useState<string>('');
+  const [selectedNode, setSelectedNode] = useState<ISelectedNode | null>(null);
   ///////////////////
   return (
     <NavigationContext.Provider
       value={{
-        selectedEmployee,
-        setSelectedEmployee,
+        selectedNode,
+        setSelectedNode,
       }}
     >
       {children}

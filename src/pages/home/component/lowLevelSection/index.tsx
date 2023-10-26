@@ -48,7 +48,7 @@ export default function LowLevelSection({ employees }: Props) {
             if (!showableLowLevels.includes(employee.id)) return null;
             return (
               <SwiperSlide key={employee.id}>
-                <EmployeeCard employee={employee} />
+                <EmployeeCard employee={employee} isSelected />
               </SwiperSlide>
             );
           })}

@@ -14,8 +14,8 @@ import 'swiper/css';
 import CeoSection from './CeoSection';
 import MidLevelSection from './midLevelSection';
 import LowLevelSection from './lowLevelSection';
-import { NavigationContextProvider } from '../contexts/navigationContex';
 import { ShowableContextProvider } from '../contexts/showableContext';
+import { NavigationContextProvider } from '../contexts/navigationContext';
 
 export default function SmartContent() {
   const { theme } = useHTheme();

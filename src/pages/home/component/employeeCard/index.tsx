@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { IEmployee } from '../../../../interfaces/employee';
 import {
   Box,
+  CardActionArea,
   CardActions,
   Chip,
   IconButton,
@@ -17,6 +18,8 @@ import { ExpandLess } from '@mui/icons-material';
 import { SearchInputContext } from '../../contexts/searchInput';
 
 interface CardComponentProps {
+  isSelected: boolean;
+  selectHandler?: () => void;
   employee: IEmployee;
   expandButton?: {
     expandLessHandler: () => void;
@@ -26,7 +29,9 @@ interface CardComponentProps {
 
 const EmployeeCard: React.FC<CardComponentProps> = ({
   employee,
+  isSelected,
   expandButton,
+  selectHandler,
 }) => {
   const { searchedText } = useContext(SearchInputContext);
   const departmentColor = getColorBaseOnDepartment(employee.department);
@@ -44,33 +49,38 @@ const EmployeeCard: React.FC<CardComponentProps> = ({
   //
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <Box sx={{ width: 'max-content', mx: 'auto' }}>
-        <StyledImage
-          alt={employee.name}
-          height={96}
-          src={employee.avatar}
-          width={96}
-        />
-      </Box>
-      <CardContent>
-        <Typography gutterBottom variant='h5' component='div'>
-          {employee.name}
-        </Typography>
-        <Stack direction='row' spacing={1} alignItems={'baseline'}>
-          <Typography variant='body2' color='text.secondary'>
-            {employee.role}
+      <CardActionArea
+        sx={{ pt: '1rem', backgroundColor: isSelected ? 'yellow' : 'unset' }}
+        onClick={selectHandler}
+      >
+        <Box sx={{ width: 'max-content', mx: 'auto' }}>
+          <StyledImage
+            alt={employee.name}
+            height={96}
+            src={employee.avatar}
+            width={96}
+          />
+        </Box>
+        <CardContent>
+          <Typography gutterBottom variant='h5' component='div'>
+            {employee.name}
           </Typography>
-          {/*Check Not CEO */}
-          {departmentColor && (
-            <Chip
-              label={employee.department}
-              sx={{
-                backgroundColor: departmentColor,
-              }}
-            />
-          )}
-        </Stack>
-      </CardContent>
+          <Stack direction='row' spacing={1} alignItems={'baseline'}>
+            <Typography variant='body2' color='text.secondary'>
+              {employee.role}
+            </Typography>
+            {/*Check Not CEO */}
+            {departmentColor && (
+              <Chip
+                label={employee.department}
+                sx={{
+                  backgroundColor: departmentColor,
+                }}
+              />
+            )}
+          </Stack>
+        </CardContent>
+      </CardActionArea>
       {expandButton && (
         <CardActions>
           <Stack justifyContent={'center'} width={'100%'} flexDirection={'row'}>
