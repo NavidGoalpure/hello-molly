@@ -5,8 +5,6 @@ import reportWebVitals from './reportWebVitals';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from './contexts/themeContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ShowableContextProvider } from './contexts/showableContext';
-import { NavigationContextProvider } from './contexts/navigationContex';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,11 +15,7 @@ root.render(
     <ThemeProvider>
       <CssBaseline />
       <QueryClientProvider client={queryClient}>
-        <ShowableContextProvider>
-          <NavigationContextProvider>
-            <App />
-          </NavigationContextProvider>
-        </ShowableContextProvider>
+        <App />
       </QueryClientProvider>
     </ThemeProvider>
   </React.StrictMode>

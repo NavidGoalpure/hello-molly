@@ -8,9 +8,9 @@ import { Divider, Grid, styled } from '@mui/material';
 import { useHTheme } from '../../../../contexts/themeContext';
 import { useDevice } from '../../../../hooks/useDevice';
 import { useContext } from 'react';
-import { ShowableContext } from '../../../../contexts/showableContext';
 import { getSlidesNumber, shouldComponentBeDisplayed } from './utils';
 import { Devices } from '../../../../interfaces';
+import { ShowableContext } from '../../contexts/showableContext';
 
 interface Props {
   employees: IEmployee[] | undefined;
@@ -39,7 +39,7 @@ export default function LowLevelSection({ employees }: Props) {
 
       <SliderWrap>
         <StyledSwiper
-          navigation={device === Devices.TABLET}
+          navigation={device !== Devices.MOBILE}
           modules={[Navigation]}
           spaceBetween={1}
           slidesPerView={slidesNumber}

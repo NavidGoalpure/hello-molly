@@ -14,6 +14,8 @@ import 'swiper/css';
 import CeoSection from './CeoSection';
 import MidLevelSection from './midLevelSection';
 import LowLevelSection from './lowLevelSection';
+import { NavigationContextProvider } from '../contexts/navigationContex';
+import { ShowableContextProvider } from '../contexts/showableContext';
 
 export default function SmartContent() {
   const { theme } = useHTheme();
@@ -39,9 +41,13 @@ export default function SmartContent() {
 
   return (
     <Wrapper theme={theme}>
-      <CeoSection employee={validatedData?.ceo} />
-      <MidLevelSection employees={validatedData?.midLevels} />
-      <LowLevelSection employees={validatedData?.lowLevel} />
+      <ShowableContextProvider>
+        <NavigationContextProvider>
+          <CeoSection employee={validatedData?.ceo} />
+          <MidLevelSection employees={validatedData?.midLevels} />
+          <LowLevelSection employees={validatedData?.lowLevel} />
+        </NavigationContextProvider>
+      </ShowableContextProvider>
     </Wrapper>
   );
 }

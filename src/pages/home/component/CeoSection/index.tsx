@@ -1,8 +1,8 @@
 import { IEmployee } from '../../../../interfaces/employee';
+import { ShowableContext } from '../../contexts/showableContext';
 import EmployeeCard from '../employeeCard';
 import { styled } from '@mui/material';
 import { useContext } from 'react';
-import { ShowableContext } from '../../../../contexts/showableContext';
 
 interface Props {
   employee: IEmployee | undefined;

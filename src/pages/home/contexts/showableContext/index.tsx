@@ -5,8 +5,8 @@ import React, {
   Dispatch,
   SetStateAction,
 } from 'react';
-import { IEmployee } from '../../interfaces/employee';
 import { getLowLevelChildrenIds } from './utils';
+import { IEmployee } from '../../../../interfaces/employee';
 
 type Context = {
   isShowCeoChildren: boolean;

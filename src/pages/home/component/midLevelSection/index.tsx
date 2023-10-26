@@ -15,11 +15,11 @@ import { useHTheme } from '../../../../contexts/themeContext';
 import { useDevice } from '../../../../hooks/useDevice';
 import { Devices } from '../../../../interfaces';
 import { useContext } from 'react';
-import { ShowableContext } from '../../../../contexts/showableContext';
 import { getSlidesNumber } from './utils';
 import { useQuery } from 'react-query';
 import { QueryKeys } from '../../../../interfaces/query';
 import { fetchOrganizationData } from '../../../../queries/fetchOrganizationData';
+import { ShowableContext } from '../../contexts/showableContext';
 
 interface Props {
   employees: IEmployee[] | undefined;
