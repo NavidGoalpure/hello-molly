@@ -48,7 +48,7 @@ const EmployeeCard: React.FC<CardComponentProps> = ({
   };
   //
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} data-cy='employeeCard'>
       <CardActionArea
         sx={{ pt: '1rem', backgroundColor: isSelected ? '#fefe9a' : 'unset' }}
         onClick={selectHandler}
@@ -85,6 +85,7 @@ const EmployeeCard: React.FC<CardComponentProps> = ({
         <CardActions>
           <Stack justifyContent={'center'} width={'100%'} flexDirection={'row'}>
             <IconButton
+              data-cy='expand-button'
               aria-label='expand'
               onClick={handleExpandClick}
               style={{

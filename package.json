@@ -35,7 +35,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:concurrent:headless": "concurrently \"npm run start\" \"cypress run  --headless\"",
+    "e2e::concurrent": "concurrently \"npm run start\" \"cypress open \"",
+    "e2e": "cypress open",
+    "e2e:headless": "cypress run  --headless"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +61,8 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.11.0",
-    "@types/react-lazy-load-image-component": "^1.6.2"
+    "@types/react-lazy-load-image-component": "^1.6.2",
+    "concurrently": "^8.2.2",
+    "cypress": "^13.3.3"
   }
 }
