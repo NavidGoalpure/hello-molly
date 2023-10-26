@@ -10,6 +10,7 @@ export default function Animations() {
         height: '100vh',
         alignItems: 'center',
         justifyContent: 'center',
+        mt: '-10rem',
       }}
     >
       <Box sx={{ width: 300 }}>

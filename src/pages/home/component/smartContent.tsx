@@ -33,10 +33,10 @@ export default function SmartContent() {
         .catch(() => setIsShowErrorModal(true));
     }
   }, [data]);
-  //error
+  //
   if (isError)
     return <ErrorDialog isOpen={true} setIsOpen={setIsShowErrorModal} />;
-  // navid loading
+  //
   if (isLoading) return <HomeSkeleton />;
 
   return (
