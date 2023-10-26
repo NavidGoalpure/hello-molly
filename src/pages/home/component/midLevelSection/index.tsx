@@ -45,7 +45,6 @@ export default function MidLevelSection({ employees }: Props) {
 
   return (
     <Wrapper theme={theme}>
-      {/* Display a divider for the section */}
       <Divider>Mid Levels</Divider>
 
       {/* Create a swiper for the employees */}

@@ -19,7 +19,7 @@ import { SearchInputContext } from '../../contexts/searchInput';
 
 interface CardComponentProps {
   isSelected: boolean;
-  selectHandler?: () => void;
+  selectHandler: () => void;
   employee: IEmployee;
   expandButton?: {
     expandLessHandler: () => void;
@@ -50,7 +50,7 @@ const EmployeeCard: React.FC<CardComponentProps> = ({
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea
-        sx={{ pt: '1rem', backgroundColor: isSelected ? 'yellow' : 'unset' }}
+        sx={{ pt: '1rem', backgroundColor: isSelected ? '#fefe9a' : 'unset' }}
         onClick={selectHandler}
       >
         <Box sx={{ width: 'max-content', mx: 'auto' }}>

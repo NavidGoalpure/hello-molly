@@ -8,15 +8,21 @@ import { Divider, Grid, styled } from '@mui/material';
 import { useHTheme } from '../../../../contexts/themeContext';
 import { useDevice } from '../../../../hooks/useDevice';
 import { useContext } from 'react';
-import { getSlidesNumber, shouldComponentBeDisplayed } from './utils';
+import {
+  getSlidesNumber,
+  isThisNodeSelected,
+  shouldComponentBeDisplayed,
+} from './utils';
 import { Devices } from '../../../../interfaces';
 import { ShowableContext } from '../../contexts/showableContext';
+import { NavigationContext } from '../../contexts/navigationContext';
 
 interface Props {
   employees: IEmployee[] | undefined;
 }
 
 export default function LowLevelSection({ employees }: Props) {
+  const { selectedNode, setSelectedNode } = useContext(NavigationContext);
   const { theme } = useHTheme();
   const device = useDevice();
   const { isShowCeoChildren, showableLowLevels } = useContext(ShowableContext);
@@ -44,11 +50,27 @@ export default function LowLevelSection({ employees }: Props) {
           spaceBetween={1}
           slidesPerView={slidesNumber}
         >
-          {employees?.map((employee) => {
+          {employees?.map((employee, index) => {
             if (!showableLowLevels.includes(employee.id)) return null;
+            // Check if the current employee is selected
+            const isSelected: boolean = isThisNodeSelected({
+              selectedNode,
+              index,
+            });
+
+            // Function to toggle the selected node
+            const toggleSelectedNode = () => {
+              setSelectedNode(() =>
+                isSelected ? null : { row: 3, column: index + 1 }
+              );
+            };
             return (
               <SwiperSlide key={employee.id}>
-                <EmployeeCard employee={employee} isSelected />
+                <EmployeeCard
+                  employee={employee}
+                  isSelected={isSelected}
+                  selectHandler={toggleSelectedNode}
+                />
               </SwiperSlide>
             );
           })}
