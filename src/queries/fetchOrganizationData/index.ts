@@ -14,6 +14,6 @@ export const fetchOrganizationData =
           reject(error); // Reject the Promise if validation fails
         }
         //navid change that
-      }, 0); // 5-second delay
+      }, 0); // 3-second delay
     });
   };

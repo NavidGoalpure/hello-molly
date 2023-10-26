@@ -1,18 +1,11 @@
-import React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import heroImage from './hero.jpg';
-import { useHTheme } from '../../../../contexts/themeContext';
 import HInput from '../../../../elements/hInput';
 
 const Hero = () => {
-  const { theme } = useHTheme();
-
   return (
-    <Wrapper id='navid'>
+    <Wrapper>
       <LazyLoadImage
         alt={'hero'}
         height={'auto'}

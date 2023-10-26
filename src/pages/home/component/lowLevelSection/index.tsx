@@ -1,34 +1,42 @@
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-////////////////////////
-import {
-  IEmployee,
-  IOrganizationStructure,
-} from '../../../../interfaces/employee';
-
+import { IEmployee } from '../../../../interfaces/employee';
 import EmployeeCard from '../employeeCard';
-import { Container, Grid, styled } from '@mui/material';
+import { Divider, Grid, styled } from '@mui/material';
 import { useHTheme } from '../../../../contexts/themeContext';
 import { useDevice } from '../../../../hooks/useDevice';
-import { getSlidesNumber } from './utils';
+import { useContext } from 'react';
+import { ShowableContext } from '../../../../contexts/showableContext';
+import { getSlidesNumber, shouldComponentBeDisplayed } from './utils';
 import { Devices } from '../../../../interfaces';
-// import required modules
 
 interface Props {
-  employees: IEmployee[];
+  employees: IEmployee[] | undefined;
 }
 
-export default function EmployeeSlider({ employees }: Props) {
+export default function LowLevelSection({ employees }: Props) {
   const { theme } = useHTheme();
   const device = useDevice();
+  const { isShowCeoChildren, showableLowLevels } = useContext(ShowableContext);
+
+  const isShowComponent = shouldComponentBeDisplayed({
+    employees,
+    showableLowLevels,
+    isShowCeoChildren,
+  });
+
+  if (!isShowComponent) {
+    return null;
+  }
+
   const slidesNumber = getSlidesNumber(device);
+
   return (
     <Wrapper theme={theme}>
+      <Divider>Low Levels</Divider>
+
       <SliderWrap>
         <StyledSwiper
           navigation={device === Devices.TABLET}
@@ -36,26 +44,30 @@ export default function EmployeeSlider({ employees }: Props) {
           spaceBetween={1}
           slidesPerView={slidesNumber}
         >
-          {/* onSlideChange={() => console.log('slide change')}
-onSwiper={(swiper: any) => console.log(swiper)} */}
-
-          {employees?.map((employee) => (
-            <SwiperSlide>
-              <EmployeeCard employee={employee} key={employee.id} />
-            </SwiperSlide>
-          ))}
+          {employees?.map((employee) => {
+            if (!showableLowLevels.includes(employee.id)) return null;
+            return (
+              <SwiperSlide key={employee.id}>
+                <EmployeeCard employee={employee} />
+              </SwiperSlide>
+            );
+          })}
         </StyledSwiper>
       </SliderWrap>
     </Wrapper>
   );
 }
+
 const Wrapper = styled(Grid)`
   background-color: ${({ theme }) => theme.palette.background.default};
   color: ${({ theme }) => theme.palette.text.primary};
+  padding-top: 2rem;
 `;
+
 const StyledSwiper = styled(Swiper)`
   padding: 3rem;
 `;
+
 export const SliderWrap = styled('div')`
   position: relative;
   .swiper {
@@ -70,4 +82,5 @@ export const SliderWrap = styled('div')`
     justify-content: center;
     align-items: center;
   }
+}
 `;

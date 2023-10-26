@@ -15,7 +15,7 @@ const mockData = {
       name: 'Alice Johnson',
       role: 'Manager',
       department: 'DEVELOPMENT',
-      avatar: 'https://mui.com/static/images/avatar/2.jpg',
+      avatar: 'https://mui.com/static/images/avatar/3.jpg',
     },
     {
       id: '3',
@@ -23,7 +23,7 @@ const mockData = {
       name: 'Bob Anderson',
       role: 'Manager',
       department: 'RESEARCH',
-      avatar: 'https://mui.com/static/images/avatar/3.jpg',
+      avatar: 'https://mui.com/static/images/avatar/2.jpg',
     },
     {
       id: '4',
@@ -74,6 +74,14 @@ const mockData = {
       role: 'Employee',
       department: 'MARKETING',
       avatar: 'https://mui.com/static/images/avatar/3.jpg',
+    },
+    {
+      id: '10',
+      parentId: '4', // Hank is the child of Eve
+      name: 'Jasper Kahn',
+      role: 'Employee',
+      department: 'MARKETING',
+      avatar: 'https://mui.com/static/images/avatar/4.jpg',
     },
   ],
 } as IOrganizationStructure;

@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import HomeSkeleton from './skeleton';
 import ErrorDialog from './errorModal';
 import { useState } from 'react';
@@ -9,12 +8,12 @@ import { QueryKeys } from '../../../interfaces/query';
 import { fetchOrganizationData } from '../../../queries/fetchOrganizationData';
 import { organizationSchema } from '../../../queries/fetchOrganizationData/yupSchema';
 import { validateAndSendErrors } from '../../../queries/utils';
-import EmployeeCard from './employeeCard';
-import { Container, Grid, styled } from '@mui/material';
+import { Grid, styled } from '@mui/material';
 import { useHTheme } from '../../../contexts/themeContext';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import EmployeeSlider from './employeeSlider';
+import CeoSection from './CeoSection';
+import MidLevelSection from './midLevelSection';
+import LowLevelSection from './lowLevelSection';
 
 export default function SmartContent() {
   const { theme } = useHTheme();
@@ -40,21 +39,14 @@ export default function SmartContent() {
 
   return (
     <Wrapper theme={theme}>
-      <CeoContainer>
-        {validatedData?.ceo && <EmployeeCard employee={validatedData.ceo} />}
-      </CeoContainer>
-      {validatedData?.midLevels && (
-        <EmployeeSlider employees={validatedData.midLevels} />
-      )}
+      <CeoSection employee={validatedData?.ceo} />
+      <MidLevelSection employees={validatedData?.midLevels} />
+      <LowLevelSection employees={validatedData?.lowLevel} />
     </Wrapper>
   );
 }
 const Wrapper = styled(Grid)`
   background-color: ${({ theme }) => theme.palette.background.default};
   color: ${({ theme }) => theme.palette.text.primary};
-`;
-const CeoContainer = styled('div')`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-top: 3rem;
 `;

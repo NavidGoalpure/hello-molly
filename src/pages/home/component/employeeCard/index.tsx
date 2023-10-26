@@ -1,26 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { IEmployee } from '../../../../interfaces/employee';
 import {
   Box,
-  Button,
-  CardActionArea,
   CardActions,
   Chip,
+  IconButton,
   Stack,
   styled,
 } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { getColorBaseOnDepartment } from './utils';
+import { ExpandLess } from '@mui/icons-material';
 
 interface CardComponentProps {
   employee: IEmployee;
+  expandButton?: {
+    expandLessHandler: () => void;
+    expandMoreHandler: () => void;
+  };
 }
 
-const EmployeeCard: React.FC<CardComponentProps> = ({ employee }) => {
+const EmployeeCard: React.FC<CardComponentProps> = ({
+  employee,
+  expandButton,
+}) => {
   const departmentColor = getColorBaseOnDepartment(employee.department);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const handleExpandClick = () => {
+    if (isExpanded) expandButton?.expandLessHandler();
+    else expandButton?.expandMoreHandler();
+    setIsExpanded(!isExpanded);
+  };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <Box sx={{ width: 'max-content', mx: 'auto' }}>
@@ -50,11 +63,23 @@ const EmployeeCard: React.FC<CardComponentProps> = ({ employee }) => {
           )}
         </Stack>
       </CardContent>
-      <CardActions>
-        <Button size='small' color='primary'>
-          Share
-        </Button>
-      </CardActions>
+      {expandButton && (
+        <CardActions>
+          <Stack justifyContent={'center'} width={'100%'} flexDirection={'row'}>
+            <IconButton
+              aria-label='expand'
+              onClick={handleExpandClick}
+              style={{
+                transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.3s ease',
+                width: 'max-content',
+              }}
+            >
+              <ExpandLess />
+            </IconButton>
+          </Stack>
+        </CardActions>
+      )}
     </Card>
   );
 };

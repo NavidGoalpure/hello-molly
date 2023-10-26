@@ -14,7 +14,7 @@ export async function validateAndSendErrors(
   } catch (validationError: any) {
     // Explicitly define the type as 'any'
     // Send the validation errors to the specified endpoint
-    console.log('navid Validation error:', validationError);
+    console.log('Validation error:', validationError);
 
     try {
       await axios.post('some-reporting-enpoint', validationError.errors);
