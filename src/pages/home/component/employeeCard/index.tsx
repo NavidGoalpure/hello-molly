@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -14,6 +14,7 @@ import {
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { getColorBaseOnDepartment } from './utils';
 import { ExpandLess } from '@mui/icons-material';
+import { SearchInputContext } from '../../contexts/searchInput';
 
 interface CardComponentProps {
   employee: IEmployee;
@@ -27,13 +28,20 @@ const EmployeeCard: React.FC<CardComponentProps> = ({
   employee,
   expandButton,
 }) => {
+  const { searchedText } = useContext(SearchInputContext);
   const departmentColor = getColorBaseOnDepartment(employee.department);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  //If the employee's name was not in the search term, return null
+  if (!employee.name.toLowerCase().includes(searchedText.toLowerCase()))
+    return null;
+  //
   const handleExpandClick = () => {
     if (isExpanded) expandButton?.expandLessHandler();
     else expandButton?.expandMoreHandler();
     setIsExpanded(!isExpanded);
   };
+  //
   return (
     <Card sx={{ maxWidth: 345 }}>
       <Box sx={{ width: 'max-content', mx: 'auto' }}>

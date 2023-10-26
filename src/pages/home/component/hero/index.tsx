@@ -1,16 +1,16 @@
 import { styled } from '@mui/material/styles';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import heroImage from './hero.jpg';
+import heroImage from './hero.webp';
 import HInput from '../../../../elements/hInput';
 
 const Hero = () => {
   return (
-    <Wrapper>
+    <Wrapper style={{ height: 'calc(100vh - 4rem)' }}>
       <LazyLoadImage
         alt={'hero'}
-        height={'auto'}
         src={heroImage}
         width={'100%'}
+        style={{ objectFit: 'cover', height: 'inherit' }}
       />
       <Content>
         <HInput

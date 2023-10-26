@@ -10,7 +10,6 @@ export default function NavigationMenu() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
-        {' '}
         <Toolbar>
           <IconButton
             size='large'
@@ -22,7 +21,7 @@ export default function NavigationMenu() {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            News
+            H-CO
           </Typography>
           <HThemeSwitch sx={{ m: 1 }} defaultChecked />
         </Toolbar>

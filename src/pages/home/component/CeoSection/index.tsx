@@ -10,6 +10,7 @@ interface Props {
 
 export default function CeoSection({ employee }: Props) {
   const { setIsShowCeoChildren } = useContext(ShowableContext);
+
   if (!employee) return null;
 
   const handleExpandLess = () => setIsShowCeoChildren(false);
